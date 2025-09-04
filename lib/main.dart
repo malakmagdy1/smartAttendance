@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smart/features/onbording/onboarding.dart';
-import 'package:toastification/toastification.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart/features/onbording/onboarding.dart';
+import 'package:toastification/toastification.dart';
 
 import 'core/localization/app_localizations.dart';
 import 'core/localization/localization_manager.dart';
@@ -56,8 +56,6 @@ class MyApp extends StatelessWidget {
                 locale: state,
                 localizationsDelegates: AppLocalizations.localizationsDelegates,
                 supportedLocales: AppLocalizations.supportedLocales,
-// CustomNav.routeName,
-                //
                 initialRoute:SplashScreen.routeName,
                 routes: {
                   SplashScreen.routeName: (context) =>  SplashScreen(),
