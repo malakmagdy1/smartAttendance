@@ -154,7 +154,7 @@ class Reqdetails extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       "From : ${item['requiredDate'] ?? '27 Dec 2025'}",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 17,
                         color: Colors.black,
@@ -162,17 +162,17 @@ class Reqdetails extends StatelessWidget {
                     ),
                     Text(
                       "To   : ${item['toDate'] ?? ''}",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
                         fontSize: 17,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     const Divider(thickness: 1, color: Color(0xFF606060)),
                     const SizedBox(height: 10),
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         Text(
                           "File :",
                           style: TextStyle(
@@ -192,7 +192,7 @@ class Reqdetails extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ),

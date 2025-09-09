@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:smart/features/home/presentation/home/presentation/home_screen.dart';
-import 'package:smart/features/home/presentation/home/presentation/navBar.dart';
+import 'package:test_salma/features/home/presentation/home/presentation/navBar.dart';
 
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/widgets/buttons/custom_button.dart';
@@ -10,11 +7,12 @@ import '../../../../../core/widgets/customTextFormField/customTextformfield.dart
 import '../../../../../core/widgets/text/custom_text.dart';
 import '../widget/customrow.dart';
 import 'SignUpScreen.dart';
-import 'create_newPass_screen.dart';
 import 'forgetPass.dart';
 
 class SignInscreen extends StatefulWidget {
   static const String routeName = '/signIn';
+
+  const SignInscreen({super.key});
   @override
   State<SignInscreen> createState() => _SigninscreenState();
 }
@@ -45,7 +43,7 @@ class _SigninscreenState extends State<SignInscreen> {
                         bold: true,
                         color: Palette.appColors.mainColor,
                       ),
-                      CustomRow("Sign in to your account or", "Sign Up",
+                      const CustomRow("Sign in to your account or", "Sign Up",
                           SignUpscreen.routeName),
                       CustomTextFormField(
                         label: "Username",
@@ -79,30 +77,27 @@ class _SigninscreenState extends State<SignInscreen> {
                             visible = !visible;
                           });
                         },
-                      ),
-                      const SizedBox(height: 20),
-                      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          TextButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context,ForgetPass.routeName);
-                              },
-                              child: CustomText.s14(
-                                "Forget Password",
-                                bold: true,
-                                color: Palette.textColor.secondTextColor,
-                              )),
-                          TextButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, CreateNewPassScreen.routeName);
-                              },
-                              child: CustomText.s14(
-                                "Create new pass",
-                                bold: true,
-                                color: Palette.textColor.secondTextColor,
-                              )),
-                        ],
-                      ),
+                      ),   Transform.translate(
+  offset: const Offset(0, -9), // 👈 بيرفع الزرار لفوق 6 بكسل
+  child: Row(
+    children: [
+      TextButton(
+        onPressed: () {
+          Navigator.pushNamed(context, ForgetPass.routeName);
+        },
+        child: CustomText.s11(
+          "Forget Password",
+          bold: true,
+          color: Palette.textColor.secondTextColor,
+        ),
+      ),
+    ],
+  ),
+),
+
+                      
+                      const SizedBox(height: 30),
+
                       CustomButton(
                         text: "Sign In",
                         onPressed: () {

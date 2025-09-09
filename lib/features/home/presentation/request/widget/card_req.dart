@@ -26,7 +26,7 @@ class Cardrequst extends StatelessWidget {
               children: [
                 const CircleAvatar(
                   radius: 20,
-                  backgroundImage: AssetImage("assets/images/person.jpeg"),
+                  backgroundImage: AssetImage("assets/icons/person.jpeg"),
                 ),
                 const SizedBox(width: 10),
                 Text(

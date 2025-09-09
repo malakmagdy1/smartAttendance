@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/theme/palette.dart';
-import '../../../../../core/widgets/progress/custom_circular_indicator.dart';
 import '../../../../../core/widgets/text/custom_text.dart';
 class MonthlyStatisticsCardWidget extends StatelessWidget {
   final int percentage;

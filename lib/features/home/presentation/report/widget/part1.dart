@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smart/features/home/presentation/report/widget/part2.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:test_salma/features/home/presentation/report/widget/part2.dart';
 
 class ReportPart1 extends StatefulWidget {
   const ReportPart1({super.key});
@@ -55,21 +55,21 @@ class _ReportPart1State extends State<ReportPart1> {
                   plotAreaBorderWidth: 0,
                   tooltipBehavior: _tooltipBehavior,
                   zoomPanBehavior: _zoomPanBehavior,
-                  primaryXAxis: CategoryAxis(
+                  primaryXAxis: const CategoryAxis(
                     interval: 1,
-                    majorGridLines: const MajorGridLines(width: 0),
-                    axisLine: const AxisLine(width: 1),
-                    labelStyle: const TextStyle(fontSize: 10),
+                    majorGridLines: MajorGridLines(width: 0),
+                    axisLine: AxisLine(width: 1),
+                    labelStyle: TextStyle(fontSize: 10),
                     labelPlacement: LabelPlacement.betweenTicks,
                     labelRotation: 45,
                   ),
-                  primaryYAxis: NumericAxis(
+                  primaryYAxis: const NumericAxis(
                     minimum: 8,
                     maximum: 12,
                     interval: 1,
                     labelFormat: '{value}:00am',
-                    axisLine: const AxisLine(width: 1),
-                    majorGridLines: const MajorGridLines(width: 0.2),
+                    axisLine: AxisLine(width: 1),
+                    majorGridLines: MajorGridLines(width: 0.2),
                   ),
                   series: <CartesianSeries<CheckinData, String>>[
                     LineSeries<CheckinData, String>(
@@ -94,7 +94,7 @@ class _ReportPart1State extends State<ReportPart1> {
               color: Colors.white,
               borderRadius: BorderRadius.circular(13),
               border: Border.all(
-                color: Color(0xFF395486),
+                color: const Color(0xFF395486),
                 width: 1,
               ),
             ),
@@ -112,7 +112,7 @@ class _ReportPart1State extends State<ReportPart1> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               SvgPicture.asset(
-                'assets/solar_download-broken.svg',
+                'assets/icons/solar_download-broken.svg',
                 width: 24,
                 height: 24,
               ),

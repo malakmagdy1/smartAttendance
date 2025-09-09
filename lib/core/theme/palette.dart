@@ -6,78 +6,53 @@ class Palette {
   const Palette();
 
   // App Colors
-  static final appColors = _AppColors();
+  static const appColors = _AppColors();
 
   // Text Colors
   static final textColor = _TextColor();
 
   // Neutral Colors
-  static final neutral = _NeutralColors();
+  static const neutral = _NeutralColors();
 
   // L G
-  static final lightGray = _LG();
+  static const lightGray = _LG();
 }
-
 class _AppColors {
-  final Color mainColor;
-  final Color secondaryColor;
-  final Color lightTextBackground;
-  final Color errorColor;
+  final Color mainColor = const Color(0xFF395886);
+  final Color secondaryColor = const Color(0xFF03DAC6);
+  final Color lightTextBackground = const Color(0xFFF5F5F5);
+  final Color errorColor = const Color(0xFFB00020);
 
-  _AppColors({
-    this.mainColor = const Color(0xff395486),
-    this.secondaryColor = const Color(0xff85684D),
-    this.lightTextBackground = const Color(0xffF4F4F4),
-    this.errorColor = const Color(0xffD80000),
-  });
+  const _AppColors();
 }
 
 class _TextColor {
-  final Color mainTextColor;
-  final Color secondTextColor;
+  final Color mainTextColor = Colors.black;
+  final Color secondTextColor = Color(0xFF737373);
 
-  _TextColor({
-    this.mainTextColor = const Color(0xff070707),
-    this.secondTextColor = const Color(0xff606060),
-  });
+   _TextColor();
 }
 
 class _NeutralColors {
-  final  Color color1;
-  final Color color2;
-  final Color color3;
-  final Color color4;
-  final Color color5;
-  final Color color6;
-  final Color color7;
-  final Color color8;
-  final Color color9;
-  final Color color10;
-  final Color color11;
-  final Color color12;
-  final Color color13;
+  final Color color1 = Colors.white;
+  final Color color2 = Colors.black;
+  final Color color3 = Colors.grey;
+  final Color color4 = Colors.red;
+  final Color color5 = Colors.green;
+  final Color color6 = Colors.blue;
+  final Color color7 = Colors.orange;
+  final Color color8 = Colors.purple;
+  final Color color9 = Colors.brown;
+  final Color color10 = Colors.teal;
+  final Color color11 = Colors.cyan;
+  final Color color12 = Colors.amber;
+  final Color color13 = Colors.indigo;
 
-  _NeutralColors({
-    this.color1 = const Color(0xffffffff),
-    this.color2 = const Color(0xfffafafa),
-    this.color3 = const Color(0xfff5f5f5),
-    this.color4 = const Color(0xfff0f0f0),
-    this.color5 = const Color(0xffd9d9d9),
-    this.color6 = const Color(0xffbfbfbf),
-    this.color7 = const Color(0xff8c8c8c),
-    this.color8 = const Color(0xff595959),
-    this.color9 = const Color(0xff434343),
-    this.color10 = const Color(0xff262626),
-    this.color11 = const Color(0xff1f1f1f),
-    this.color12 = const Color(0xff141414),
-    this.color13 = const Color(0xff000000),
-  });
+  const _NeutralColors();
 }
 
 class _LG {
-  final Color lightGray;
+  final Color lightGray = const Color(0xFFEEEEEE);
 
-  _LG({
-    this.lightGray = const Color(0xffA8A8A8),
-  });
+  const _LG();
 }

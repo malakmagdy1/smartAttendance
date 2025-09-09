@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:test_salma/features/auth/presentation/pages/create_newpass_screen.dart';
 
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/widgets/buttons/custom_button.dart';
 import '../../../../../core/widgets/text/custom_text.dart';
 import '../widget/appBarFloating.dart';
-import 'forgetPass.dart';
 
 class VerifyScreen extends StatefulWidget {
   static const String routeName = '/verify';
@@ -41,7 +41,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            AppBarFloating("Verify Your Messages", ForgetPass.routeName),
+            const AppBarFloating("Verify Your Messages", CreateNewPassScreen.routeName),
             SizedBox(height: height * 0.03),
             Image.asset(
               "assets/images/Logo.png",
@@ -63,7 +63,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                     keyboardType: TextInputType.number,
                     maxLength: 1,
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     decoration: InputDecoration(
                       counterText: '',
                       enabledBorder: OutlineInputBorder(
@@ -100,16 +100,18 @@ class _VerifyScreenState extends State<VerifyScreen> {
             SizedBox(height: height * 0.04),
             CustomText.s14(
               "Please enter the 6 digits code sent to 01094112497",
-              color: Palette.textColor.secondTextColor,
+                  color: Palette.textColor.secondTextColor,
             ),
             SizedBox(height: height * 0.03),
 
             CustomButton(
               text: "Verify Code",
-              onPressed: () {}
+            onPressed: () {Navigator.pushNamed(context,CreateNewPassScreen.routeName);},
             ),
             TextButton(
-              onPressed: () {},
+              
+            onPressed: () {Navigator.pushNamed(context,CreateNewPassScreen.routeName);},
+
               child: CustomText.s16(
                 "Resend Code?",
                 color: Palette.appColors.mainColor,

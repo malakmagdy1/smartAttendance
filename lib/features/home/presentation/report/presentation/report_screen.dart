@@ -47,13 +47,13 @@ class _ReportsScreenState extends State<ReportsScreen> {
                         color: Colors.grey.shade200,
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3),
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Icon(Icons.calendar_today_outlined, size: 16),
                       SizedBox(width: 8),
                       Text("01 Jun 2025  ➤  30 Jun 2025",
@@ -64,7 +64,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
                 ),
               ),
               const SizedBox(height: 16),
-              ReportPart1(),
+              const ReportPart1(),
               const SizedBox(height: 24),
               Text("Working Hours & Timing",
                 style: GoogleFonts.poppins(
@@ -75,7 +75,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
               const SizedBox(height: 4),
               Text("Avg per day hours", style: TextStyle(color: Colors.grey[600])),
               const SizedBox(height: 8),
-              Part2DetailsReport(),
+              const Part2DetailsReport(),
               const SizedBox(height: 20),
               Center(
                 child: ElevatedButton(
@@ -101,9 +101,10 @@ class _ReportsScreenState extends State<ReportsScreen> {
                       ),
                       const SizedBox(width: 8),
                       SvgPicture.asset(
-                        'assets/solar_download-broken.svg',
+                        'assets/icons/solar_download-broken.svg',
                         height: 20,
                         width: 20,
+                        // ignore: deprecated_member_use
                         color: Colors.white,
                       ),
                     ],

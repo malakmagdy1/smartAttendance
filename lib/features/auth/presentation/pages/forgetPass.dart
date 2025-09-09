@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:smart/features/auth/presentation/pages/verify.dart';
+import 'package:test_salma/features/auth/presentation/pages/verify.dart';
 
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/widgets/buttons/custom_button.dart';
 import '../../../../../core/widgets/customTextFormField/customTextformfield.dart';
 import '../../../../../core/widgets/text/custom_text.dart';
 import '../widget/appBarFloating.dart';
-import 'SignInScreen.dart';
 
 class ForgetPass extends StatefulWidget {
   static const String routeName = "/forgetPass";
 
+  const ForgetPass({super.key});
   @override
   State<ForgetPass> createState() => _ForgetPassState();
 }
@@ -34,7 +33,7 @@ class _ForgetPassState extends State<ForgetPass> {
             key: _formKey,
             child: Column(
               children: [
-                AppBarFloating("Forget Password", SignInscreen.routeName),
+                const AppBarFloating("Forget Password", VerifyScreen.routeName),
                 SizedBox(height: height * 0.03),
                 Image.asset(
                   "assets/images/Logo.png",

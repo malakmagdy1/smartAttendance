@@ -15,7 +15,7 @@ class CustomTextFormField extends StatelessWidget {
   final VoidCallback? onSuffixTap;
 
   const CustomTextFormField({
-    Key? key,
+    super.key,
     required this.label,
     this.hintText,
     required this.controller,
@@ -25,7 +25,7 @@ class CustomTextFormField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.onSuffixTap,
-  }) : super(key: key);
+  });
 
   // var mediaQuery = MediaQuery.of(context).size;
   // double fontSize = mediaQuery.width * 0.035; // e.g., ~14 at 400px width

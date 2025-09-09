@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/widgets/buttons/custom_button.dart';
@@ -9,6 +8,8 @@ import 'SignInScreen.dart';
 
 class CreateNewPassScreen extends StatefulWidget {
   static const String routeName = "/CreateNewPassScreen";
+
+  const CreateNewPassScreen({super.key});
 
   @override
   State<CreateNewPassScreen> createState() => _CreateNewPassScreenState();
@@ -35,7 +36,7 @@ class _CreateNewPassScreenState extends State<CreateNewPassScreen> {
           padding: EdgeInsets.symmetric(horizontal: width * 0.05),
           child: Column(
             children: [
-              AppBarFloating("Create New Password", SignInscreen.routeName),
+              const AppBarFloating("Create New Password", SignInscreen.routeName),
               SizedBox(height: height * 0.03),
               Image.asset(
                 "assets/images/Logo.png",
@@ -44,9 +45,13 @@ class _CreateNewPassScreenState extends State<CreateNewPassScreen> {
                 fit: BoxFit.contain,
               ),
               SizedBox(height: height * 0.1),
-              CustomText.s14(
-                "You new password must be different from previously used password",
-                color: Palette.textColor.secondTextColor,
+             
+                Center(
+                  child: CustomText.s14(
+                    "You new password must be different from previously used password",
+                    color: Palette.textColor.secondTextColor,
+                  ),
+                
               ),
               SizedBox(height: height * 0.02),
               CustomTextFormField(
@@ -89,7 +94,7 @@ class _CreateNewPassScreenState extends State<CreateNewPassScreen> {
   void Verify(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
     final height = mediaQuery.height;
-    final width = mediaQuery.width;
+    //final width = mediaQuery.width;
     showDialog(
       context: context,
       barrierDismissible: false, // prevents tapping outside to dismiss

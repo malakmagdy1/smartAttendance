@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:smart/features/onbording/onboarding.dart';
+import 'package:test_salma/features/auth/presentation/pages/verify.dart';
+import 'package:test_salma/features/onbording/onboarding.dart';
 import 'package:toastification/toastification.dart';
 
-import 'core/localization/app_localizations.dart';
-import 'core/localization/localization_manager.dart';
 import 'core/shared_preferences/shared_prefs.dart';
 import 'core/theme/app_theme.dart';
 import 'features/auth/presentation/pages/SignInScreen.dart';
 import 'features/auth/presentation/pages/SignUpScreen.dart';
-import 'features/auth/presentation/pages/create_newPass_screen.dart';
+import 'features/auth/presentation/pages/create_newpass_screen.dart';
 import 'features/auth/presentation/pages/forgetPass.dart';
 import 'features/home/presentation/home/presentation/home_screen.dart';
 import 'features/home/presentation/home/presentation/navBar.dart';
 import 'features/onbording/splash.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +30,6 @@ void main() async {
 
   runApp(MyApp(sharedPrefs: sharedPrefs));
 }
-
 class MyApp extends StatelessWidget {
   final SharedPrefs sharedPrefs;
 
@@ -39,39 +37,31 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => LocaleCubit(),
-      child: BlocBuilder<LocaleCubit, Locale>(
-        builder: (context, state) {
-          return ScreenUtilInit(
-            minTextAdapt: true,
-            splitScreenMode: true,
-            designSize: const Size(393, 852),
-            builder: (context, child) => ToastificationWrapper(
-              child: MaterialApp(
-                key: ValueKey<String>(state.languageCode), // keeps your key
-                debugShowCheckedModeBanner: false,
-                title: 'smart_attendance_system',
-                theme: AppTheme().theme,
-                locale: state,
-                localizationsDelegates: AppLocalizations.localizationsDelegates,
-                supportedLocales: AppLocalizations.supportedLocales,
-                initialRoute:SplashScreen.routeName,
-                routes: {
-                  SplashScreen.routeName: (context) =>  SplashScreen(),
-                  Onboarding.routeName:(context)=>Onboarding(),
-                  SignUpscreen.routeName:(context)=>SignUpscreen(),
-                  SignInscreen.routeName:(context)=>SignInscreen(),
-                  ForgetPass.routeName:(context)=>ForgetPass(),
-                  HomeScreen.routeName:(context)=>HomeScreen(),
-                  CustomNav.routeName:(context)=>CustomNav(),
-                  CreateNewPassScreen.routeName:(context)=>CreateNewPassScreen()
-                },
-              ),
-            ),
-          );
-        },
+    return ScreenUtilInit(
+      minTextAdapt: true,
+      splitScreenMode: true,
+      designSize: const Size(393, 852),
+      builder: (context, child) => ToastificationWrapper(
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'smart_attendance_system',
+          theme: AppTheme().theme,
+          initialRoute: SplashScreen.routeName,
+          routes: {
+            SplashScreen.routeName: (context) => const SplashScreen(),
+            Onboarding.routeName: (context) => const Onboarding(),
+            SignUpscreen.routeName: (context) => const SignUpscreen(),
+            SignInscreen.routeName: (context) => const SignInscreen(),
+            ForgetPass.routeName: (context) => const ForgetPass(),
+            VerifyScreen.routeName: (context) => const VerifyScreen(),
+            HomeScreen.routeName: (context) => const HomeScreen(),
+            CustomNav.routeName: (context) => const CustomNav(),
+            CreateNewPassScreen.routeName: (context) => const CreateNewPassScreen(),
+          },
+        ),
       ),
     );
   }
 }
+
+

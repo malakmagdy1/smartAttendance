@@ -70,11 +70,11 @@ void ShowFilterSheet({
                 indent: 160,
                 endIndent: 160,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(height: 50),
-                  const Text(
+                  Text(
                     "Filter Requests:",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
