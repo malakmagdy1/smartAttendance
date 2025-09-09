@@ -7,13 +7,13 @@ class Part2DetailsReport extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        buildTimingRow("S", "Holiday", "", Color(0xFFECD614), "00 h 00m"),
-        buildTimingRow("S", "08:00", "06:00", Color(0xff00ff00), "10 h 00m"),
-        buildTimingRow("M", "08:20", "06:50", Color(0xff00ff00), "09 h 30m"),
-        buildTimingRow("T", "10:30", "08:00", Color(0xFFD80000), "08 h 30m"),
-        buildTimingRow("W", "10:30", "08:00", Color(0xFFD80000), "08 h 30m"),
-        buildTimingRow("T", "10:30", "08:00", Color(0xFFD80000), "08 h 30m"),
-        buildTimingRow("F", "Holiday", "", Color(0xFFECD614), "00 h 00m"),
+        buildTimingRow("S", "Holiday", "", const Color(0xFFECD614), "00 h 00m"),
+        buildTimingRow("S", "08:00", "06:00", const Color(0xff00ff00), "10 h 00m"),
+        buildTimingRow("M", "08:20", "06:50", const Color(0xff00ff00), "09 h 30m"),
+        buildTimingRow("T", "10:30", "08:00", const Color(0xFFD80000), "08 h 30m"),
+        buildTimingRow("W", "10:30", "08:00", const Color(0xFFD80000), "08 h 30m"),
+        buildTimingRow("T", "10:30", "08:00", const Color(0xFFD80000), "08 h 30m"),
+        buildTimingRow("F", "Holiday", "", const Color(0xFFECD614), "00 h 00m"),
       ],
     );
   }
@@ -80,9 +80,9 @@ Widget buildTimingRow(
 
 
 Color getPointColor(double hour) {
-  if (hour < 9.5) return Color(0xff00ff00);
-  if (hour < 10.5) return Color(0xFFECD614);
-  return Color(0xFFD80000);
+  if (hour < 9.5) return const Color(0xff00ff00);
+  if (hour < 10.5) return const Color(0xFFECD614);
+  return const Color(0xFFD80000);
 }
 
 Color getInTimeColor(String inTime) {

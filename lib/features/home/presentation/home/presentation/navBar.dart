@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/theme/palette.dart';
 import '../../profile/presentation/profile_screen.dart';
 import '../../report/presentation/report_screen.dart';
@@ -8,6 +9,8 @@ import 'home_screen.dart';
 class CustomNav extends StatefulWidget {
   static const String routeName = '/nav';
 
+  const CustomNav({super.key});
+
   @override
   State<CustomNav> createState() => _CustomNavState();
 }
@@ -15,7 +18,7 @@ class CustomNav extends StatefulWidget {
 class _CustomNavState extends State<CustomNav> {
   int _selectedIndex = 0;
 
-  final List<Widget> widgetOptions = [
+  final List<Widget> widgetOptions = const [
     HomeScreen(),
     ReportsScreen(),
     RequestScreen(),
@@ -28,9 +31,8 @@ class _CustomNavState extends State<CustomNav> {
       extendBody: true,
       body: widgetOptions[_selectedIndex],
 
-      // BottomAppBar with rounded corners and FAB notch
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.transparent,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
@@ -38,22 +40,38 @@ class _CustomNavState extends State<CustomNav> {
           ),
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
           ),
           child: BottomAppBar(
-            shape: CircularNotchedRectangle(),
+            shape: const CircularNotchedRectangle(),
             notchMargin: 6,
             color: Palette.appColors.mainColor,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                buildNavItem(Icons.home_outlined, 'Home', 0),
-                buildNavItem(Icons.favorite_border_outlined, 'Reports', 1),
-                SizedBox(width: 70), // Space for FAB
-                buildNavItem(Icons.back_hand, 'Requests', 2),
-                buildNavItem(Icons.person_2_outlined, 'Profile', 3),
+                buildNavItem(
+                  iconData: Icons.home_outlined,
+                  label: 'Home',
+                  index: 0,
+                ),
+                buildNavItem(
+                  svgPath: "assets/icons/tabler_report-search.svg",
+                  label: 'Reports',
+                  index: 1,
+                ),
+                const SizedBox(width: 60), // Space for FAB
+                buildNavItem(
+                  svgPath: "assets/icons/lsicon_order-edit-filled.svg",
+                  label: 'Requests',
+                  index: 2,
+                ),
+                buildNavItem(
+                  iconData: Icons.person,
+                  label: 'Profile',
+                  index: 3,
+                ),
               ],
             ),
           ),
@@ -64,40 +82,51 @@ class _CustomNavState extends State<CustomNav> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Palette.appColors.mainColor,
         onPressed: () {},
-        child: Icon(
-          Icons.document_scanner_outlined,
-          color: Colors.white,
-          size: 30,
-        ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(100), // Fully circular
+          borderRadius: BorderRadius.circular(100),
+        ),
+        child: SvgPicture.asset(
+          "assets/icons/majesticons_qr-code.svg",
+          width: 24,
+          height: 24,
+          color: Colors.white,
         ),
       ),
     );
   }
 
-  Widget buildNavItem(IconData icon, String label, int index) {
+  Widget buildNavItem({
+    IconData? iconData,
+    String? svgPath,
+    required String label,
+    required int index,
+  }) {
+    assert(iconData != null || svgPath != null,
+        'Provide either iconData or svgPath');
+
     final bool selected = _selectedIndex == index;
+    final Color color = selected ? Colors.white : Palette.neutral.color3;
+
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          _selectedIndex = index;
-        });
-      },
+      onTap: () => setState(() => _selectedIndex = index),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            icon,
-            color: selected ? Colors.white : Palette.neutral.color7,
-            size: 25,
+          SizedBox(
+            height: 25,
+            width: 25,
+            child: svgPath != null
+                ? SvgPicture.asset(
+                    svgPath,
+                    width: 24,
+                    height: 24,
+                    colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+                  )
+                : Icon(iconData, color: color, size: 25),
           ),
           Text(
             selected ? label : '',
-            style: TextStyle(
-              color: selected ? Colors.white : Palette.neutral.color7,
-              fontSize: 10,
-            ),
+            style: TextStyle(color: color, fontSize: 10),
           ),
         ],
       ),

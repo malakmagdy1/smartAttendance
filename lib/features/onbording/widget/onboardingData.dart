@@ -1,7 +1,6 @@
-import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../core/theme/palette.dart';
 import '../../../core/widgets/buttons/custom_button.dart';
 import '../../../core/widgets/text/custom_text.dart';
@@ -15,16 +14,20 @@ class OnboardingData extends StatelessWidget {
   final bool? skip;
   final VoidCallback next;
   final VoidCallback? backnav;
+  final String buttonText; 
 
 
-  const OnboardingData({
+  const OnboardingData({super.key, 
     required this.next,
     required this.title,
     required this.text,
     required this.imagePath,
     this.backIcon = false,
     this.skip = false,
-     this.backnav
+     this.backnav,
+    required this.buttonText, 
+
+
   });
 
   @override
@@ -35,13 +38,20 @@ class OnboardingData extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: backIcon == true
-            ? IconButton(
-          onPressed: backnav,
-          icon: Image.asset("assets/images/backicon.png",color: Colors.white,),
+        automaticallyImplyLeading: false,
+
+       leading: backIcon == true
+    ? IconButton(
+        onPressed: backnav,
+        icon: SvgPicture.asset(
+          "assets/icons/weui_back-filled.svg",
+           width: 24, 
+          height: 24,
           color: Colors.white,
-        )
-            : null,
+        ),
+      )
+    : null,
+
         actions: [
           if (skip == true)
             TextButton(
@@ -81,7 +91,7 @@ class OnboardingData extends StatelessWidget {
                       text,
                       color: Palette.textColor.secondTextColor,
                     ),
-                    CustomButton(text: "Next", onPressed:next,),SizedBox(height:mediaQuery.height*0.05),
+                    CustomButton(text: buttonText, onPressed: next),SizedBox(height:mediaQuery.height*0.05),
                   ],
                 ),
               ),
@@ -102,6 +112,8 @@ class OnboardingItem {
   final bool skip;
   final VoidCallback next;
   final VoidCallback? backnav;
+  final String buttonText;
+
 
   OnboardingItem({
     required this.next,
@@ -110,6 +122,8 @@ class OnboardingItem {
     required this.imagePath,
     this.backIcon = false,
     this.skip = false,
-    this.backnav
+    this.backnav,
+      required this.buttonText, 
+
   });
 }

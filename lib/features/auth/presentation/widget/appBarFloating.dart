@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/widgets/text/custom_text.dart';
@@ -32,7 +32,12 @@ class AppBarFloating extends StatelessWidget implements PreferredSizeWidget {
           },
           backgroundColor: Colors.white,
           shape: const CircleBorder(),
-          child: Image.asset("assets/images/backicon.png"),
+          child: SvgPicture.asset(
+            "assets/icons/weui_back-filled.svg",
+            width: 24,
+            height: 24,
+            color: Palette.appColors.mainColor, // غيّرت اللون عشان يبان
+          ),
         ),
       ),
     );

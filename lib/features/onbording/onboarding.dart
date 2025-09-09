@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import '../auth/presentation/pages/SignUpScreen.dart';
-import 'widget/onboardingData.dart';
+import 'widget/onboardingdata.dart';
 
 class Onboarding extends StatefulWidget {
   static const String routeName='/Onboarding';
+
+  const Onboarding({super.key});
 
   @override
   State<Onboarding> createState() => _OnboardingState();
@@ -22,17 +24,20 @@ class _OnboardingState extends State<Onboarding> {
       OnboardingItem(
         title: "Redefining Attendance",
         text: "An intuitive system built to simplify how teams check in, track time, and stay aligned.",
-        imagePath: "assets/images/On Boarding 1.png",
+        imagePath: "assets/images/onBoarding1.jpg",
+        backIcon: false,
         skip: true,
+        buttonText: "next", 
         next: _nextPage,
       ),
-      OnboardingItem(skip: true,
+      OnboardingItem(
           title: "Built Around You",
           text: "Easily view your tasks, monitor your hours, and stay connected with HR — all in one place.",
-          imagePath: "assets/images/On Boarding 2.png",
+          imagePath: "assets/images/onBoarding2.jpg",
           backIcon: true,
           next:()=> Navigator.pushNamed(context, SignUpscreen.routeName),
-          backnav:_goToFirstPage
+          backnav:_goToFirstPage,
+          buttonText: "get Start", 
       ),
     ];
   }
@@ -40,7 +45,7 @@ class _OnboardingState extends State<Onboarding> {
   void _goToFirstPage() {
     _controller.animateToPage(
       0,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
   }
@@ -48,7 +53,7 @@ class _OnboardingState extends State<Onboarding> {
   void _nextPage() {
     if (_currentPage < data.length - 1) {
       _controller.nextPage(
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeIn,
       );
     } else {
@@ -75,6 +80,8 @@ class _OnboardingState extends State<Onboarding> {
           skip: item.skip,
           next:item.next,
           backnav: item.backnav,
+         buttonText:item.buttonText,
+
         );
       },
     );

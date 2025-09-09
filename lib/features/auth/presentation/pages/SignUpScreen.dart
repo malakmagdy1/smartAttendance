@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:test_salma/features/home/presentation/home/presentation/navBar.dart';
 
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/widgets/buttons/custom_button.dart';
@@ -10,6 +10,8 @@ import 'SignInScreen.dart';
 
 class SignUpscreen extends StatefulWidget {
   static const String routeName = "/loginscreen";
+
+  const SignUpscreen({super.key});
 
   @override
   State<SignUpscreen> createState() => _SignUpscreenState();
@@ -45,7 +47,7 @@ class _SignUpscreenState extends State<SignUpscreen> {
                 children: [
                   CustomText.s24("Welcome!",
                       color: Palette.appColors.mainColor, bold: true),
-                  CustomRow("Create a new account or", "Sign In",
+                  const CustomRow("Create a new account or", "Sign In",
                       SignInscreen.routeName),
                   CustomTextFormField(
                     label: "Username",
@@ -71,10 +73,11 @@ class _SignUpscreenState extends State<SignUpscreen> {
                     validator: (value) =>
                         value!.isEmpty ? "Code is required" : null,
                   ),
+
                   CustomTextFormField(
                     label: "Password",
-                    hintText: "Enter your password",
-                    controller: passwordController,
+                    hintText: "enter your Password",
+                    controller: conformPasswordController,
                     isPassword: visible,
                     validator: (value) =>
                         value!.length < 6 ? "Min 6 characters" : null,
@@ -120,12 +123,15 @@ class _SignUpscreenState extends State<SignUpscreen> {
                   const SizedBox(height: 20),
                   CustomButton(
                     text: "Sign Up",
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        Navigator.pushNamed(context, SignInscreen.routeName);
-                        print("All valid, proceed");
-                      }
+                    onPressed: (){
+Navigator.pushReplacementNamed(context, CustomNav.routeName);
                     },
+                    // onPressed: () {
+                    //   if (_formKey.currentState!.validate()) {
+                    //     Navigator.pushNamed(context, HomeScreen.routeName);
+                    //     print("All valid, proceed");
+                    //   }
+                    // },
                   ),
                 ],
               ),

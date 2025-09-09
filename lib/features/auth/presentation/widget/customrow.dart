@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/palette.dart';
@@ -8,7 +7,7 @@ class CustomRow extends StatelessWidget {
   final String text;
   final String routeNav;
   final String buttontext;
-  CustomRow(this.text, this.buttontext, this.routeNav);
+  const CustomRow(this.text, this.buttontext, this.routeNav, {super.key});
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -20,10 +19,10 @@ class CustomRow extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(context,routeNav);
           },
-          child: CustomText.s16(buttontext, color: Palette.appColors.mainColor),
           style: ButtonStyle(
             padding: WidgetStateProperty.all(EdgeInsets.zero),
           ),
+          child: CustomText.s16(buttontext, color: Palette.appColors.mainColor),
         )
       ],
     );
