@@ -34,7 +34,6 @@ class _ReportsScreenState extends State<ReportsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 12),
               Center(
                 child: Container(
                   height: 56,
@@ -82,7 +81,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF395486),
-                    padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                    // padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -94,7 +93,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
                       const Text(
                         'Export As',
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 15,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),

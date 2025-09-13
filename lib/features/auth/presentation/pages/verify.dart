@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:test_salma/features/auth/presentation/pages/create_newpass_screen.dart';
 
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/widgets/buttons/custom_button.dart';
 import '../../../../../core/widgets/text/custom_text.dart';
 import '../widget/appBarFloating.dart';
+import 'create_newPass_screen.dart';
 
 class VerifyScreen extends StatefulWidget {
   static const String routeName = '/verify';

@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:test_salma/core/theme/palette.dart';
+import 'package:test_salma/features/auth/presentation/pages/SignInScreen.dart';
+import 'package:test_salma/features/home/presentation/profile/presentation/personal_info.dart';
+import 'package:test_salma/features/home/presentation/profile/presentation/privacy_policy.dart';
+import 'package:test_salma/features/home/presentation/profile/presentation/reset_password.dart';
+
+import '../../../../../core/theme/palette.dart';
+import '../../../../../core/widgets/text/custom_text.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -13,13 +19,9 @@ class ProfileScreen extends StatelessWidget {
         backgroundColor: Colors.grey[100],
         elevation: 0,
         centerTitle: true,
-        title:  Text(
-          "profile",
-          style: TextStyle(
+        title: CustomText.s24(
+          "profile", bold: true,
             color: Palette.appColors.mainColor,
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-          ),
         ),
       ),
       body: Column(
@@ -28,16 +30,17 @@ class ProfileScreen extends StatelessWidget {
           // صورة واسم وتخصص
           const CircleAvatar(
             radius: 55,
-            backgroundImage: AssetImage("assets/images/profile.png"), // غيّرها على حسب صورتك
+            backgroundImage: AssetImage(
+              "assets/images/profile.png",
+            ), // غيّرها على حسب صورتك
           ),
           const SizedBox(height: 10),
-          const Text(
-            "Farida Ahmed",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          CustomText.s18(
+            "Farida Ahmed", bold: true,
           ),
-          const Text(
+          CustomText.s14(
             "Full Stack",
-            style: TextStyle(color: Colors.grey, fontSize: 14),
+            color: Colors.grey,
           ),
           const SizedBox(height: 25),
 
@@ -47,33 +50,43 @@ class ProfileScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               children: [
                 _buildListTile(
-  context,
-  title: "Personal Info",
-  icon: Icon(Icons.person_outline, color: Palette.appColors.mainColor), // ✅ صح
-  onTap: () {},
-),
+                  context,
+                  title: "Personal Info",
+                  icon: Icon(
+                    Icons.person_outline,
+                    color: Palette.appColors.mainColor,
+                  ), // ✅ صح
+                  onTap: () {
+                    Navigator.pushNamed(context, PersonalInfo.routeName);
+                  },
+                ),
 
                 _buildNotificationTile(),
                 _buildLanguageTile(),
-              _buildListTile(
-  context,
-  title: "Privacy Policy",
-  icon: SvgPicture.asset(
-    'assets/icons/Component 18 (1).svg',
-    width: 24,
-    height: 24,
-  ),
-  onTap: () {},
-),
+                _buildListTile(
+                  context,
+                  title: "Privacy Policy",
+                  icon: SvgPicture.asset(
+                    'assets/icons/Component 18 (1).svg',
+                    width: 24,
+                    height: 24,
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, PrivacyPolicy.routeName);
+                  },
+                ),
 
                 _buildListTile(
                   context,
                   title: "Reset Password",
-icon: SvgPicture.asset(
-    'assets/icons/hugeicons_reset-password.svg',
-    width: 24,
-    height: 24,
-  ),                  onTap: () {},
+                  icon: SvgPicture.asset(
+                    'assets/icons/hugeicons_reset-password.svg',
+                    width: 24,
+                    height: 24,
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, ResetPassword.routeName);
+                  },
                 ),
 
                 const SizedBox(height: 20),
@@ -102,77 +115,78 @@ icon: SvgPicture.asset(
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
-      
     );
   }
 
   // عنصر عادي في القائمة
-Widget _buildListTile(BuildContext context,
-    {required String title,
+  Widget _buildListTile(BuildContext context, {
+    required String title,
     required Widget icon,
-    required VoidCallback onTap}) {
-  return Card(
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
-      side: const BorderSide(color: Colors.indigo, width: 1), 
-    ),
-    child: ListTile(
-      leading: icon, // هنا بقي يقبل Icon أو SvgPicture.asset
-      title: Text(title),
-      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-      onTap: onTap,
-    ),
-  );
-}
-
-
-// عنصر Notification
-Widget _buildNotificationTile() {
-  return Card(
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
-      side: const BorderSide(color: Colors.indigo, width: 1), // ✅ حواف كحلي
-    ),
-    child: SwitchListTile(
-      activeThumbColor: Palette.appColors.mainColor,
-      title: const Text("Notification"),
-      value: true,
-      onChanged: (value) {},
-      secondary: Icon(Icons.notifications_outlined,
-          color: Palette.appColors.mainColor),
-    ),
-  );
-}
-Widget _buildLanguageTile() {
-  return Card(
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
-      side: const BorderSide(color: Colors.indigo, width: 1),
-    ),
-    child: ListTile(
-      leading: SvgPicture.asset(
-        'assets/icons/Component 18.svg',
-        width: 24,
-        height: 24,
-        color: Palette.appColors.mainColor, // لو عايزة تغيري لون الـ SVG
+    required VoidCallback onTap,
+  }) {
+    return Card(color: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+        side: const BorderSide(color: Colors.indigo, width: 1),
       ),
-      title: const Text("Language"),
-      trailing: DropdownButton<String>(
-        underline: const SizedBox(),
-        value: "English",
-        items: const [
-          DropdownMenuItem(value: "English", child: Text("English")),
-          DropdownMenuItem(value: "Arabic", child: Text("Arabic")),
-        ],
+      child: ListTile(
+        leading: icon, // هنا بقي يقبل Icon أو SvgPicture.asset
+        title: Text(title),
+        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+        onTap: onTap,
+      ),
+    );
+  }
+
+  // عنصر Notification
+  Widget _buildNotificationTile() {
+    return Card(color: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+        side: const BorderSide(color: Colors.indigo, width: 1), // ✅ حواف كحلي
+      ),
+      child: SwitchListTile(
+        activeThumbColor: Palette.appColors.mainColor,
+        title: const Text("Notification"),
+        value: true,
         onChanged: (value) {},
+        secondary: Icon(
+          Icons.notifications_outlined,
+          color: Palette.appColors.mainColor,
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
+  Widget _buildLanguageTile() {
+    return Card(color: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+        side: const BorderSide(color: Colors.indigo, width: 1),
+      ),
+      child: ListTile(
+        leading: SvgPicture.asset(
+          'assets/icons/Component 18.svg',
+          width: 24,
+          height: 24,
+          color: Palette.appColors.mainColor, // لو عايزة تغيري لون الـ SVG
+        ),
+        title: const Text("Language"),
+        trailing: DropdownButton<String>(
+          underline: const SizedBox(),
+          value: "English",
+          items: const [
+            DropdownMenuItem(value: "English", child: Text("English")),
+            DropdownMenuItem(value: "Arabic", child: Text("Arabic")),
+          ],
+          onChanged: (value) {},
+        ),
+      ),
+    );
+  }
 
   void _showLogoutDialog(BuildContext context) {
     showModalBottomSheet(
@@ -186,12 +200,13 @@ Widget _buildLanguageTile() {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-               Text(
+              Text(
                 "Logout",
                 style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Palette.appColors.mainColor),
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Palette.appColors.mainColor,
+                ),
               ),
               const SizedBox(height: 10),
               const Text(
@@ -206,10 +221,14 @@ Widget _buildLanguageTile() {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.brown,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
                       onPressed: () => Navigator.pop(context),
-                      child:  Text("Cancel",style: TextStyle(color: Palette.neutral.color1)),
+                      child: Text(
+                        "Cancel",
+                        style: TextStyle(color: Palette.neutral.color1),
+                      ),
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -218,17 +237,21 @@ Widget _buildLanguageTile() {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Palette.appColors.mainColor,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.pushNamed(context, SignInscreen.routeName);
                         // ضيف هنا كود تسجيل الخروج
                       },
-                      child:  Text("Yes",style: TextStyle(color: Palette.neutral.color1),),
+                      child: Text(
+                        "Yes",
+                        style: TextStyle(color: Palette.neutral.color1),
+                      ),
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         );
