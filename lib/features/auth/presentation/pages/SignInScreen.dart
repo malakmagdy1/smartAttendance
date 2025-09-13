@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:test_salma/features/home/presentation/home/presentation/navBar.dart';
 
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/widgets/buttons/custom_button.dart';
 import '../../../../../core/widgets/customTextFormField/customTextformfield.dart';
 import '../../../../../core/widgets/text/custom_text.dart';
+import '../../../home/presentation/home/presentation/navBar.dart';
 import '../widget/customrow.dart';
 import 'SignUpScreen.dart';
 import 'forgetPass.dart';
@@ -30,83 +30,93 @@ class _SigninscreenState extends State<SignInscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-            child: Padding(
-                padding: const EdgeInsets.only(left: 18.0, right: 18, top: 80),
-                child: Form(
-                    key: _formKey,
-                    child: Center(
-                        child: Column(children: [
-                      Image.asset("assets/images/Logo.png"),
-                      CustomText.s24(
-                        "Welcome Back!",
-                        bold: true,
-                        color: Palette.appColors.mainColor,
-                      ),
-                      const CustomRow("Sign in to your account or", "Sign Up",
-                          SignUpscreen.routeName),
-                      CustomTextFormField(
-                        label: "Username",
-                        hintText: "Enter your name",
-                        controller: nameController,
-                        keyboardType: TextInputType.name,
-                        validator: (value) =>
-                            value!.isEmpty ? "Name is required" : null,
-                      ),
-                      CustomTextFormField(
-                        label: "Company Code",
-                        hintText: "Enter your code",
-                        controller: companyCodeController,
-                        keyboardType: TextInputType.text,
-                        validator: (value) =>
-                            value!.isEmpty ? "Code is required" : null,
-                      ),
-                      CustomTextFormField(
-                        label: "Password",
-                        hintText: "Enter your password",
-                        controller: passwordController,
-                        isPassword: visible,
-                        validator: (value) =>
-                            value!.length < 6 ? "Min 6 characters" : null,
-                        suffixIcon: tap
-                            ? Icons.visibility_off_outlined
-                            : Icons.visibility,
-                        onSuffixTap: () {
-                          setState(() {
-                            tap = !tap;
-                            visible = !visible;
-                          });
-                        },
-                      ),   Transform.translate(
-  offset: const Offset(0, -9), // 👈 بيرفع الزرار لفوق 6 بكسل
-  child: Row(
-    children: [
-      TextButton(
-        onPressed: () {
-          Navigator.pushNamed(context, ForgetPass.routeName);
-        },
-        child: CustomText.s11(
-          "Forget Password",
-          bold: true,
-          color: Palette.textColor.secondTextColor,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 18.0, right: 18, top: 80),
+          child: Form(
+            key: _formKey,
+            child: Center(
+              child: Column(
+                children: [
+                  Image.asset("assets/images/Logo.png"),
+                  CustomText.s24(
+                    "Welcome Back!",
+                    bold: true,
+                    color: Palette.appColors.mainColor,
+                  ),
+                  const CustomRow(
+                    "Sign in to your account or",
+                    "Sign Up",
+                    SignUpscreen.routeName,
+                  ),
+                  CustomTextFormField(
+                    label: "Username",
+                    hintText: "Enter your name",
+                    controller: nameController,
+                    keyboardType: TextInputType.name,
+                    validator: (value) =>
+                        value!.isEmpty ? "Name is required" : null,
+                  ),
+                  CustomTextFormField(
+                    label: "Company Code",
+                    hintText: "Enter your code",
+                    controller: companyCodeController,
+                    keyboardType: TextInputType.text,
+                    validator: (value) =>
+                        value!.isEmpty ? "Code is required" : null,
+                  ),
+                  CustomTextFormField(
+                    label: "Password",
+                    hintText: "Enter your password",
+                    controller: passwordController,
+                    isPassword: visible,
+                    validator: (value) =>
+                        value!.length < 6 ? "Min 6 characters" : null,
+                    suffixIcon: tap
+                        ? Icons.visibility_off_outlined
+                        : Icons.visibility,
+                    onSuffixTap: () {
+                      setState(() {
+                        tap = !tap;
+                        visible = !visible;
+                      });
+                    },
+                  ),
+                  Transform.translate(
+                    offset: const Offset(0, -9), // 👈 بيرفع الزرار لفوق 6 بكسل
+                    child: Row(
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, ForgetPass.routeName);
+                          },
+                          child: CustomText.s11(
+                            "Forget Password",
+                            bold: true,
+                            color: Palette.textColor.secondTextColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 30),
+
+                  CustomButton(
+                    text: "Sign In",
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        Navigator.pushNamed(context, CustomNav.routeName);
+                        print("All valid, proceed");
+                      }
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
-    ],
-  ),
-),
-
-                      
-                      const SizedBox(height: 30),
-
-                      CustomButton(
-                        text: "Sign In",
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            Navigator.pushNamed(context, CustomNav.routeName);
-                            print("All valid, proceed");
-                          }
-                        },
-                      ),
-                    ]))))));
+    );
   }
 }

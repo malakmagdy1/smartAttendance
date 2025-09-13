@@ -26,7 +26,7 @@ android {
         applicationId = "com.example.smart"
 
         // 🔹 Fix minSdk issue
-        minSdk = 23
+        minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
 
         versionCode = flutter.versionCode

@@ -29,8 +29,9 @@ class _AppColors {
 class _TextColor {
   final Color mainTextColor = Colors.black;
   final Color secondTextColor = Color(0xFF737373);
+  final Color thirdTextColor = Colors.grey.shade400;
 
-   _TextColor();
+  _TextColor();
 }
 
 class _NeutralColors {

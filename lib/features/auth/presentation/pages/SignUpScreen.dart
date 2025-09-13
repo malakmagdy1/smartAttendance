@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:test_salma/features/home/presentation/home/presentation/navBar.dart';
 
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/widgets/buttons/custom_button.dart';
 import '../../../../../core/widgets/customTextFormField/customTextformfield.dart';
 import '../../../../../core/widgets/text/custom_text.dart';
+import '../../../home/presentation/home/presentation/navBar.dart';
 import '../widget/customrow.dart';
 import 'SignInScreen.dart';
 

@@ -10,6 +10,9 @@ class Cardrequst extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // screen width
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Card(
       color: Colors.white,
       margin: const EdgeInsets.symmetric(vertical: 8),
@@ -29,28 +32,37 @@ class Cardrequst extends StatelessWidget {
                   backgroundImage: AssetImage("assets/icons/person.jpeg"),
                 ),
                 const SizedBox(width: 10),
-                Text(
-                  item['name'] ?? '',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                Expanded(
+                  // <-- Prevent overflow for long names
+                  child: Text(
+                    item['name'] ?? '',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      overflow: TextOverflow.ellipsis, // truncate if too long
+                    ),
                   ),
                 ),
                 const Spacer(),
                 SizedBox(
                   height: 30,
-                  child: OutlinedButton(
-                    onPressed: () {Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Reqdetails(item:item),
-                      ),
-                    );},
-                    style: OutlinedButton.styleFrom(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Reqdetails(item: item),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       foregroundColor: Colors.grey,
+                      shadowColor: Colors.grey,
+                      elevation: 4,
+                      // controls shadow intensity
                       shape: const StadiumBorder(),
-                      side: const BorderSide(color: Colors.grey, width: 1.0),
+                      // keeps rounded pill shape
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                     ),
                     child: const Text(
@@ -62,10 +74,11 @@ class Cardrequst extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
+
+            // Instead of fixed SizedBox(width: ..) use Expanded
             Row(
               children: [
-                const Text("Application Submission Date"),
-                const SizedBox(width: 54),
+                const Expanded(child: Text("Application Submission Date")),
                 Text(
                   item['submissionDate'] ?? '',
                   style: const TextStyle(fontWeight: FontWeight.bold),
@@ -75,8 +88,7 @@ class Cardrequst extends StatelessWidget {
             const SizedBox(height: 4),
             Row(
               children: [
-                const Text("The required date"),
-                const SizedBox(width: 137),
+                const Expanded(child: Text("The required date")),
                 Text(
                   item['requiredDate'] ?? '',
                   style: const TextStyle(fontWeight: FontWeight.bold),
@@ -86,14 +98,14 @@ class Cardrequst extends StatelessWidget {
             const SizedBox(height: 4),
             Row(
               children: [
-                const Text("Type of excuse"),
-                const SizedBox(width: 160),
+                const Expanded(child: Text("Type of excuse")),
                 Text(
                   item['type'] ?? '',
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
             ),
+
             const SizedBox(height: 10),
             Center(
               child: Text(
